@@ -2,9 +2,9 @@
 
 class Account
 {
-    public string $ownerCpf;
-    public string $ownerName;
-    public float $balance;
+    private string $ownerCpf;
+    private string $ownerName;
+    private float $balance = 0;
 
     public function withdraw(float $value): void
     {
@@ -28,6 +28,31 @@ class Account
     {
         $this->withdraw($value);
         $account->deposit($value);
+    }
+
+    public function getBalance():float
+    {
+        return $this->balance;
+    }
+
+    public function getCPF():string
+    {
+        return $this->ownerCpf;
+    }
+
+    public function getName():string
+    {
+        return $this->ownerName;
+    }
+
+    public function setName(string $name)
+    {
+        $this->ownerName = $name;
+    }
+
+    public function setCPF(string $cpf)
+    {
+        $this->ownerCpf = $cpf;
     }
 
 
