@@ -2,14 +2,15 @@
 
 class Account
 {
-    private float $balance;
+    private string $ownerCpf;
+    private string $ownerName;
+    private float $balance = 0;
 
-    public function __construct(
-        public readonly string $ownerName,
-        public readonly string $ownerCpf
-    )
+    public function __construct(string $ownerName, string $ownerCpf)
     {
         $this->balance = 0;
+        $this->ownerName = $this->nameValidation($ownerName);
+        $this->ownerCpf = $ownerCpf;
     }
     
     public function withdraw(float $value): void
@@ -51,5 +52,10 @@ class Account
         return $this->ownerName;
     }
 
+    private function nameValidation(string $name):string|null
+    {
+        if(strlen($name) < 5) return null;
+        return $name;
+    }
 
 }
