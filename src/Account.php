@@ -2,15 +2,14 @@
 
 class Account
 {
-    private string $ownerCpf;
-    private string $ownerName;
-    private float $balance = 0;
+    private float $balance;
 
-    public function __construct(string $ownerName, string $ownerCpf )
+    public function __construct(
+        public readonly string $ownerName,
+        public readonly string $ownerCpf
+    )
     {
         $this->balance = 0;
-        $this->ownerName = $ownerName;
-        $this->ownerCpf = $ownerCpf;
     }
     
     public function withdraw(float $value): void
