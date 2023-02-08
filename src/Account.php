@@ -6,6 +6,13 @@ class Account
     private string $ownerName;
     private float $balance = 0;
 
+    public function __construct(string $ownerName, string $ownerCpf )
+    {
+        $this->balance = 0;
+        $this->ownerName = $ownerName;
+        $this->ownerCpf = $ownerCpf;
+    }
+    
     public function withdraw(float $value): void
     {
         if ($value > $this->balance && $value < 0) {
@@ -43,16 +50,6 @@ class Account
     public function getName():string
     {
         return $this->ownerName;
-    }
-
-    public function setName(string $name)
-    {
-        $this->ownerName = $name;
-    }
-
-    public function setCPF(string $cpf)
-    {
-        $this->ownerCpf = $cpf;
     }
 
 
