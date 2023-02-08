@@ -4,15 +4,18 @@ class Account
 {
     private string $ownerCpf;
     private string $ownerName;
-    private float $balance = 0;
+    private float $balance;
+    private static int $instanceNunber = 0;
 
     public function __construct(string $ownerName, string $ownerCpf)
     {
         $this->balance = 0;
         $this->ownerName = $this->nameValidation($ownerName);
         $this->ownerCpf = $ownerCpf;
+
+        Account::$instanceNunber++;//Access to static property into Account class
     }
-    
+
     public function withdraw(float $value): void
     {
         if ($value > $this->balance && $value < 0) {
@@ -37,25 +40,28 @@ class Account
         $account->deposit($value);
     }
 
-    public function getBalance():float
+    public function getBalance(): float
     {
         return $this->balance;
     }
 
-    public function getCPF():string
+    public function getCPF(): string
     {
         return $this->ownerCpf;
     }
 
-    public function getName():string
+    public function getName(): string
     {
         return $this->ownerName;
     }
 
-    private function nameValidation(string $name):string|null
+    private function nameValidation(string $name): string|null
     {
-        if(strlen($name) < 5) return null;
+        if (strlen($name) < 5) return null;
         return $name;
     }
 
+    public static function getInstanceNumber(){
+        return self::$instanceNunber;
+    }
 }
