@@ -10,8 +10,15 @@ new Account('André Lopes', '060.913.743-90');
 new Account('André Lopes', '060.913.743-90');
 new Account('André Lopes', '060.913.743-90');
 
-echo "Nome: {$account1->getName()} | CPF: {$account1->getCPF()}" . PHP_EOL;
-echo "Nome: {$account2->getName()} | CPF: {$account2->getCPF()}" . PHP_EOL;
+
+$text = <<<TEXT
+    Nome: {$account2->getName()}
+    CPF: {$account2->getCPF()}
+    Saldo: {$account1->getBalance()}
+    TEXT;
+
+
+echo $text . PHP_EOL;
 
 $account1->deposit(1000);
 

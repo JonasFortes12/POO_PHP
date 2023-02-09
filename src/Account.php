@@ -13,7 +13,13 @@ class Account
         $this->ownerName = $this->nameValidation($ownerName);
         $this->ownerCpf = $ownerCpf;
 
-        Account::$instanceNunber++;//Access to static property into Account class
+        self::$instanceNunber++;//Access to static property into Account class
+    }
+
+    public function __destruct()
+    {
+        //Called when the object lose his reference
+        self::$instanceNunber--;
     }
 
     public function withdraw(float $value): void
@@ -64,4 +70,5 @@ class Account
     public static function getInstanceNumber(){
         return self::$instanceNunber;
     }
+
 }
