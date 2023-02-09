@@ -1,20 +1,19 @@
 <?php
 require_once 'src/Account.php';
+require_once 'src/Owner.php';
 
-$account1 = new Account('Rodrigo Amperiano', '024.679.712-45');
+$account1 = new Account(new Owner('Rodrigo Amperiano', '024.679.712-45'));
 
-$account2 = new Account('André Lopes', '060.913.743-90');
-new Account('André Lopes', '060.913.743-90');
-new Account('André Lopes', '060.913.743-90');
-new Account('André Lopes', '060.913.743-90');
-new Account('André Lopes', '060.913.743-90');
-new Account('André Lopes', '060.913.743-90');
+$account2 = new Account(new Owner('André Lopes', '060.913.743-90'));
+
+$account3 = new Account(new Owner('André', '270.133.423-71'));
+
 
 
 $text = <<<TEXT
-    Nome: {$account2->getName()}
-    CPF: {$account2->getCPF()}
-    Saldo: {$account1->getBalance()}
+    Name: {$account1->getOwner()->getName()}
+    CPF: {$account1->getOwner()->getCpf()}
+    Balance: {$account1->getBalance()}
     TEXT;
 
 

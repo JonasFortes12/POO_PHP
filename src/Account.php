@@ -2,16 +2,14 @@
 
 class Account
 {
-    private string $ownerCpf;
-    private string $ownerName;
+    private Owner $owner;
     private float $balance;
     private static int $instanceNunber = 0;
 
-    public function __construct(string $ownerName, string $ownerCpf)
+    public function __construct(Owner $owner)
     {
+        $this->owner = $owner;
         $this->balance = 0;
-        $this->ownerName = $this->nameValidation($ownerName);
-        $this->ownerCpf = $ownerCpf;
 
         self::$instanceNunber++;//Access to static property into Account class
     }
@@ -51,24 +49,12 @@ class Account
         return $this->balance;
     }
 
-    public function getCPF(): string
-    {
-        return $this->ownerCpf;
-    }
-
-    public function getName(): string
-    {
-        return $this->ownerName;
-    }
-
-    private function nameValidation(string $name): string|null
-    {
-        if (strlen($name) < 5) return null;
-        return $name;
-    }
-
     public static function getInstanceNumber(){
         return self::$instanceNunber;
     }
 
+    public function getOwner():Owner
+    {
+        return $this->owner;
+    }
 }
