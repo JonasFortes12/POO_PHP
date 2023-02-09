@@ -1,11 +1,12 @@
 <?php
+require_once 'src/CPF.php';
 
 class Owner
 {
     private string $name;
-    private string $cpf;
+    private CPF $cpf;
 
-    public function __construct(string $name, string $cpf)
+    public function __construct(string $name, CPF $cpf)
     {
         $this->name = $this->nameValidation($name);
         $this->cpf = $cpf;
@@ -18,7 +19,7 @@ class Owner
 
     public function getCpf(): string
     {
-        return $this->cpf;
+        return $this->cpf->getCpf();
     }
 
     private function nameValidation(string $name): string|null
