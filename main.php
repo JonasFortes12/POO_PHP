@@ -1,8 +1,10 @@
 <?php
+require_once 'src/Person.php';
+require_once 'src/CPF.php';
 require_once 'src/Account.php';
 require_once 'src/Owner.php';
-require_once 'src/CPF.php';
 require_once 'src/Address.php';
+require_once 'src/Employee.php';
 
 $address = new Address(
     'Sobral-CE',
@@ -22,6 +24,8 @@ $account1 = new Account(
 
 //$account3 = new Account(new Owner('André', new CPF('270.133.423-71')));
 
+$employee = new Employee('Reginaldo', new CPF('673.784.972-66'), 'Programador');
+
 
 $text = <<<TEXT
     Name: {$account1->getOwner()->getName()}
@@ -35,10 +39,19 @@ $text = <<<TEXT
     TEXT;
 
 
-echo $text . PHP_EOL;
+$text2 = <<<TEXT
+    Nome: {$employee->getName()}
+    Cargo: {$employee->getRole()}
+    CPF: {$employee->getCPF()->getCpfNumber()}
+TEXT;
+echo $text2 . PHP_EOL;
 
-//$account1->deposit(1000);
-//
-//$account1->transfer(400, $account2);
-//
-//echo Account::getInstanceNumber() . PHP_EOL;
+$employee->setName('José Reginaldo Cavalcante');
+
+$text2 = <<<TEXT
+    Nome: {$employee->getName()}
+    Cargo: {$employee->getRole()}
+    CPF: {$employee->getCPF()->getCpfNumber()}
+TEXT;
+echo $text2 . PHP_EOL;
+
