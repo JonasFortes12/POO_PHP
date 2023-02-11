@@ -8,7 +8,7 @@ class CPF
         $this->cpf = $cpf;
     }
 
-    public function getCpf(): string
+    public function getCpfNumber(): string
     {
         return $this->cpf;
     }
