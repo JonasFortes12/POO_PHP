@@ -3,7 +3,8 @@
 require_once './autoload.php';
 
 use MyBank\Model\CPF;
-use MyBank\Model\Account\Account;
+use MyBank\Model\Account\CheckingAccount;
+use MyBank\Model\Account\DepositAccount;
 use MyBank\Model\Account\Owner;
 use MyBank\Model\Address;
 use MyBank\Model\Employee;
@@ -15,19 +16,31 @@ $address1 = new Address(
     '34 - ALTOS'
 );
 
-$account1 = new Account(
+$account1 = new CheckingAccount(
     new Owner(
         'Rodrigo Amperiano',
         new CPF('024.679.712-45'),
         $address1)
 );
 
-//$account2 = new Account(new Owner('André Lopes', new CPF('060.913.743-90')));
+$account2 = new DepositAccount(
+    new Owner(
+        'Lupita Marques',
+        new CPF('532.884.409-67'),
+        $address1)
+);
 
-//$account3 = new Account(new Owner('André', new CPF('270.133.423-71')));
 
-$employee = new Employee('Reginaldo', new CPF('673.784.972-66'), 'Programador');
+$account1->deposit(300);
+$account1->withdraw(100);
+var_dump($account1->getBalance());
 
+$account2->deposit(300);
+$account2->withdraw(100);
+var_dump($account2->getBalance());
+
+
+exit();
 
 $text = <<<TEXT
     Name: {$account1->getOwner()->getName()}
@@ -41,19 +54,5 @@ $text = <<<TEXT
     TEXT;
 
 
-$text2 = <<<TEXT
-    Nome: {$employee->getName()}
-    Cargo: {$employee->getRole()}
-    CPF: {$employee->getCPF()->getCpfNumber()}
-TEXT;
-echo $text2 . PHP_EOL;
 
-$employee->setName('José Reginaldo Cavalcante');
-
-$text2 = <<<TEXT
-    Nome: {$employee->getName()}
-    Cargo: {$employee->getRole()}
-    CPF: {$employee->getCPF()->getCpfNumber()}
-TEXT;
-echo $text2 . PHP_EOL;
 
