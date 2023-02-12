@@ -1,4 +1,5 @@
 <?php
+namespace MyBank\Model\Account;
 
 class Account
 {
@@ -49,7 +50,7 @@ class Account
         return $this->balance;
     }
 
-    public static function getInstanceNumber(){
+    public static function getInstanceNumber():int{
         return self::$instanceNunber;
     }
 

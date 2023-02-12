@@ -1,12 +1,14 @@
 <?php
-require_once 'src/Person.php';
-require_once 'src/CPF.php';
-require_once 'src/Account.php';
-require_once 'src/Owner.php';
-require_once 'src/Address.php';
-require_once 'src/Employee.php';
 
-$address = new Address(
+require_once './autoload.php';
+
+use MyBank\Model\CPF;
+use MyBank\Model\Account\Account;
+use MyBank\Model\Account\Owner;
+use MyBank\Model\Address;
+use MyBank\Model\Employee;
+
+$address1 = new Address(
     'Sobral-CE',
     'Centro',
     'Monte Alverne',
@@ -17,7 +19,7 @@ $account1 = new Account(
     new Owner(
         'Rodrigo Amperiano',
         new CPF('024.679.712-45'),
-        $address)
+        $address1)
 );
 
 //$account2 = new Account(new Owner('André Lopes', new CPF('060.913.743-90')));

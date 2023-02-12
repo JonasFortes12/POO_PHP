@@ -1,6 +1,9 @@
 <?php
-require_once 'src/CPF.php';
-require_once 'src/Person.php';
+namespace MyBank\Model\Account;
+
+use MyBank\Model\CPF;
+use MyBank\Model\Person;
+use MyBank\Model\Address;
 
 class Owner extends Person
 {
