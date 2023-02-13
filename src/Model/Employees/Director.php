@@ -2,16 +2,19 @@
 
 namespace MyBank\Model\Employees;
 
-class Director extends Employee
+use MyBank\Model\Authenticable;
+use MyBank\Service\Authenticator;
+
+
+class Director extends Employee implements Authenticable
 {
     public function calculateBonus(): float
     {
         return $this->getSalary() * 2;
     }
 
-    public function authentication(string $password):bool
+    public function authentication(string $password): bool
     {
         return $password === '1234';
     }
-
 }

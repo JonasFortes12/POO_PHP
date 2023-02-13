@@ -1,11 +1,12 @@
 <?php
 namespace MyBank\Model\Account;
 
+use MyBank\Model\Authenticable;
 use MyBank\Model\CPF;
 use MyBank\Model\Person;
 use MyBank\Model\Address;
 
-class Owner extends Person
+class Owner extends Person implements Authenticable
 {
     private Address $address;
 
@@ -17,6 +18,11 @@ class Owner extends Person
     public function getAddress():Address
     {
         return $this->address;
+    }
+
+    public function authentication(string $password): bool
+    {
+        return $password = 'abcd';
     }
 
 }
