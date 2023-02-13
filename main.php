@@ -2,12 +2,8 @@
 
 require_once './autoload.php';
 
-use MyBank\Model\CPF;
-use MyBank\Model\Account\CheckingAccount;
-use MyBank\Model\Account\DepositAccount;
-use MyBank\Model\Account\Owner;
-use MyBank\Model\Address;
-use MyBank\Model\Employee;
+use MyBank\Model\{CPF, Address};
+use MyBank\Model\Account\{CheckingAccount, DepositAccount, Owner};
 
 $address1 = new Address(
     'Sobral-CE',
