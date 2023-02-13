@@ -9,19 +9,16 @@ use MyBank\Service\BonusControl;
 $employer1 = new Developer(
     'José Ferreira',
      new CPF('884.996.743-97'),
-    'Marketing Analyst',
     6500.00);
 
 $employer2 = new Manager(
     'Lupita Manuela',
     new CPF('140.492.915-05'),
-    'Secretary',
     4400.00);
 
 $employer3 = new Director(
     'Laiane Moreira',
     new CPF('720.064.821-70'),
-    'General Supervisor',
     10500.00);
 
 

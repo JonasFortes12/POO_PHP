@@ -7,13 +7,11 @@ use MyBank\Model\Person;
 
 abstract class Employee extends Person
 {
-    private string $role;
     private float $salary;
 
-    public function __construct(string $name, CPF $cpf, string $role, float $salary)
+    public function __construct(string $name, CPF $cpf, float $salary)
     {
         parent::__construct($name, $cpf);
-        $this->role = $role;
         $this->salary = $salary;
     }
 
@@ -32,10 +30,7 @@ abstract class Employee extends Person
         $this->name = parent::nameValidation($name);
     }
 
-    public function calculateBonus(): float
-    {
-        return $this->getSalary() * 0.1;
-    }
+    abstract public function calculateBonus(): float;
 
     public function salaryIncrease($increase): void
     {

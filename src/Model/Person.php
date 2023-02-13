@@ -1,7 +1,7 @@
 <?php
 namespace MyBank\Model;
 
-class Person
+abstract class Person
 {
     protected string $name;
     private CPF $cpf;
