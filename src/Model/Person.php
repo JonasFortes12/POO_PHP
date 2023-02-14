@@ -19,7 +19,7 @@ abstract class Person
     {
         return $this->cpf;
     }
-    protected function nameValidation(string $name): string|null
+    final protected function nameValidation(string $name): string|null
     {
         if (strlen($name) < 5) return null;
         return $name;
