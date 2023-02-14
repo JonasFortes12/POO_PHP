@@ -1,14 +1,11 @@
 <?php namespace MyBank\Model;
 
-/**
- * @property-write  string $city;
- * @property-write  string $neighborhood;
- * @property-write  string $street;
- * @property-write  string $number;
- *
- */
+
+use MyBank\Service\PropertiesAccess;
+
 class Address
 {
+    use PropertiesAccess;
     private string $city;
     private string $neighborhood;
     private string $street;
@@ -58,13 +55,6 @@ class Address
         return $text;
     }
 
-    public function __get(string $name)
-    {
-        $method = 'get' . ucfirst($name);
-
-        return $this->$method();
-    }
-
     private function setCity(string $city): void
     {
         $this->city = $city;
@@ -85,10 +75,4 @@ class Address
         $this->number = $number;
     }
 
-    public function __set(string $name, string $value)
-    {
-        $method = 'set' . ucfirst($name);
-
-        return $this->$method($value);
-    }
 }

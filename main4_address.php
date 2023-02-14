@@ -23,4 +23,4 @@ echo $address1 . PHP_EOL . $address2 . PHP_EOL;
 
 $address2->neighborhood = 'Pedra Mole';
 
-echo $address2->getNeighborhood() . PHP_EOL;
+echo $address2->neighborhood . PHP_EOL;
