@@ -19,9 +19,13 @@ abstract class Person
     {
         return $this->cpf;
     }
-    final protected function nameValidation(string $name): string|null
+    final protected function nameValidation(string $name): string
     {
-        if (strlen($name) < 5) return null;
+        if (strlen($name) < 5){
+            throw new \LengthException(
+                "Name length very small. Must be bigger than 5 chars"
+            );
+        }
         return $name;
     }
 

@@ -1,6 +1,8 @@
 <?php
 namespace MyBank\Model\Account;
 
+use http\Exception\InvalidArgumentException;
+
 abstract class Account
 {
     private Owner $owner;
@@ -23,19 +25,22 @@ abstract class Account
 
     public function withdraw(float $value): void
     {
-        if ($value > $this->balance && $value < 0) {
-            echo 'Invalid Value' . PHP_EOL;
-            return;
+        if ($value > $this->balance || $value < 0) {
+            throw new InsufficientBalanceException(
+                $value,
+                $this->balance
+            );
         }
 
-        $this->balance -= $value * $this->tribute();
+        $this->balance -= $value + ($value * $this->tribute());
     }
 
     public function deposit(float $value): void
     {
         if ($value < 0) {
-            echo 'Valor inválido!' . PHP_EOL;
-            return;
+            throw new \InvalidArgumentException(
+                'Invalid Value. Less than zero.'
+            );
         }
         $this->balance += $value;
     }
